@@ -11,7 +11,6 @@ def solve(s):
         else:
             temp += ch
     arr.append(temp)
-    # return arr
     return "".join(map(lambda x: x.capitalize(), arr))
 
 if __name__ == '__main__':
