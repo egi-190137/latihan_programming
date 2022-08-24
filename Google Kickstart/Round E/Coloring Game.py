@@ -9,7 +9,6 @@ def coloring_game(n):
             count_bot += 1
         else:
             bot = True
-    print(sequence)
     return count_bot
 
 t = int(input())
@@ -18,4 +17,4 @@ for _ in range(t):
     arr.append(int(input()))
 
 for i, item in enumerate(arr):
-    print(f"Case #{i}: {coloring_game(item)}")
+    print(f"Case #{i+1}: {coloring_game(item)}")
