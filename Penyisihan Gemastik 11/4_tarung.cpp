@@ -13,6 +13,12 @@ int main() {
         cin >> p[i];
     }
 
+    for (int i = 0; i < n; i++) {
+        cout << p[i] << " ";
+    }
+
+    cout << endl;
+
     m = p[0];
 
     for (int i = 1; i < n; i++) {
@@ -22,12 +28,12 @@ int main() {
                 idxTerkecil = j;
             }
         }
-        if (i != idxTerkecil) {
+        // if (i != idxTerkecil) {
             // Tukar index
-            temp = p[idxTerkecil];
-            p[idxTerkecil] = p[i];
-            p[i] = temp;
-        }
+        temp = p[idxTerkecil];
+        p[idxTerkecil] = p[i];
+        p[i] = temp;
+
         // cout << "m : " << m << " Ai :" << A[i] << " Bi : " << B[i] << endl;
         if (p[i] > m) {
             menang = false;

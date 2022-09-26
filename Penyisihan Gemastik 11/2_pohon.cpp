@@ -3,6 +3,7 @@
 #include <array>
 #include <algorithm>
 #include <iterator>
+#include <vector>
 
 using namespace std;
 
@@ -10,31 +11,54 @@ struct titik {
     int x, y;
 };
 
+// bool cekGradien(vector<line> &lines, line gradient) {
+//     for (const line& line : lines) {
+//         if (line == gradient) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
 struct line {
     float gradient;
     bool position; // 0 dikiri / dibawah pak  blangkon // 1 dikanan / diatas pak  blangkon 
 };
 
 int main() {
-    int n, xb, yb;
-    titik arr[n];
-    line lines[n];
+    int n, xb, yb, delta_x;
+    // vector<line> lines;
 
-    int test[] = {1, 2,3 4, 5};
+    // int test[] = {1, 2,3, 4, 5};
     cin >> n;
     cin >> xb;
     cin >> yb;
 
-    cout << n << " " << xb << " " << yb << endl;
+    titik arr[n];
+    line lines[n];
+
+    // cout << n << " " << xb << " " << yb << endl;
     for (int i = 0; i < n; i++) {
-        cin >> arr[i].x;
-        cin >> arr[i].y;
+        cin >> arr[i].x >> arr[i].y;
     }
-    bool idx = find(begin(test), end(test), 1) != end(test);
+
+    // for (int i = 0; i < n; i++) {
+    //     cout << arr[i].x << " " << arr[i].y << endl;
+    // }
+
+
+    // bool idx = find(begin(test), end(test), 1) != end(test);
 
     for (int i = 0; i < n; i++) {
-        float gradient = (arr[i].y-yb) / (arr[i].x-xb);
+        float gradient;
         bool position;
+
+        delta_x = arr[i].x-xb;
+        if (delta_x == 0) {
+            gradient = INFINITY;
+        } else {
+            gradient = (arr[i].y-yb) / delta_x;
+        }
 
         if (isinf(gradient)) {
             position = (arr[i].y > yb);
@@ -42,11 +66,14 @@ int main() {
             position = (arr[i].x > xb);
         }
 
-        line temp;
-        temp.gradient = gradient;
-        temp.position = position; 
+        // line temp;
+        lines[i].gradient = gradient;
+        lines[i].position = position;
 
-        // Cek apakah ada di array lines
+        // lines[i] = temp;
+
+        
+        // // Cek apakah ada di array lines
         // bool idx = find(begin(lines), end(lines), temp) != end(lines);
         
         // if (idx != end(lines)) {
@@ -54,8 +81,24 @@ int main() {
         // } else {
         //     cerr << "Not found" << endl;
         // }
+    }
+
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        bool unique = true;
+        for (int j = i+1; j < n; j++) {
+            if ((lines[i].gradient == lines[j].gradient) && (lines[i].position == lines[j].position)) {
+                unique = false;
+                break;
+            }
+        }
+        if (unique) {
+            count++;
+        }
 
     }
+
+    cout << count << endl;
 
 
 
