@@ -7,12 +7,6 @@ class Solution:
             if int(num[i]) % 2 > 0:
                 return num[:i+1]
         return ""
-        # num = int(num)
-        # while num > 0:
-        #     if num % 2 > 0:
-        #         return str(num)
-        #     num //= 10
-        # return ""
             
 class MyTest(unittest.TestCase):
     def setUp(self):
