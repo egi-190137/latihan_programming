@@ -14,20 +14,6 @@ class Solution:
 
         return total_distance
 
-
-        # current_point = points[0]
-        # destination_point_idx = 1
-        # while True:
-        #     if current_point == points[destination_point_idx]:
-        #         if destination_point_idx == len(points) - 1:
-        #             break
-        #         else:
-        #             destination_point_idx += 1
-        #             continue
-
-        #     if 
-
-        pass    
         
 class MyTest(unittest.TestCase):
     def setUp(self):
