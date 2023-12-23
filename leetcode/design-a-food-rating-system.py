@@ -4,34 +4,18 @@ import unittest
 class FoodRatings:
 
     def __init__(self, foods: list[str], cuisines: list[str], ratings: list[int]):
-        self.datas = {}
+        self.cuisine_to_food = {}
+        self.food_to_rating = {}
         for i in range(len(foods)):
-            self.datas[cuisines[i]] = self.datas.get(cuisines[i], []) + [[ foods[i], ratings[i] ]]
+            self.cuisine_to_food[cuisines[i]] = self.cuisine_to_food.get(cuisines[i], []) + [ foods[i] ]
+            self.food_to_rating[foods[i]] = ratings[i]
 
     def changeRating(self, food: str, newRating: int) -> None:
-        for cuisine in self.datas.keys():
-            for i in range(len(self.datas[cuisine])):
-                if self.datas[cuisine][i][0] == food:
-                    self.datas[cuisine][i][1] = newRating
-                    return
+        self.food_to_rating[food] = newRating
 
     def highestRated(self, cuisine: str) -> str:
-        highest_idx = 0
-        for i in range(1, len(self.datas[cuisine])):
-            if self.datas[cuisine][i][1] > self.datas[cuisine][highest_idx][1]:
-                highest_idx = i
-            elif self.datas[cuisine][i][1] == self.datas[cuisine][highest_idx][1]:
-                if self.datas[cuisine][i][0] < self.datas[cuisine][highest_idx][0]:
-                    highest_idx = i
+        return max(self.cuisine_to_food, key=lambda x: self.cuisine_to_food[x])
 
-        return self.datas[cuisine][highest_idx][0]
-
-    def __str__(self):
-        return str(self.datas)
-        # return '\n'.join([ f"name: {self.datas[][i]}; cuisine: {self.cuisines[i]}; rating: {self.ratings[i]}" for i in range(len(self.foods)) ])
-
-
-# Your FoodRatings object will be instantiated and called as such:
 # obj = FoodRatings(foods, cuisines, ratings)
 # obj.changeRating(food,newRating)
 # param_2 = obj.highestRated(cuisine)
