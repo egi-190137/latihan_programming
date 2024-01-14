@@ -1,7 +1,7 @@
 import unittest
 
 from collections import Counter
-Counter
+
 class Solution:
     def destCity(self, paths: list[list[str]]) -> str:
         if len(paths) == 1:
