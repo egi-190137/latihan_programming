@@ -6,5 +6,6 @@ def solution(s):
         hasil += ch
     return hasil
 
+
 print(solution("breakCamelCase"))
 print("breakCamelCase")
