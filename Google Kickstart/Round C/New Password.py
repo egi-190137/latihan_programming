@@ -5,25 +5,28 @@ def checkAlpha(password, upper):
     for a in alpha:
         if a in password:
             return True
-            
+
     return False
-    
+
+
 def checkDigit(password):
     digit = "0123456789"
     for a in digit:
         if a in password:
             return True
-            
+
     return False
+
 
 def checkSpesial(password):
     digit = "#", "@", "*", "&"
     for a in digit:
         if a in password:
             return True
-            
+
     return False
-    
+
+
 t = int(input())
 
 arr = []
@@ -42,7 +45,7 @@ for i in range(len(arr)):
             arr[i] += "1"
         if not checkSpesial(arr[i]):
             arr[i] += "#"
-        
+
         if len(arr[i]) < 7:
             arr[i] += "a"
         else:
